@@ -1,8 +1,8 @@
 package StringUtils
 
 import (
-	"time"
 	"math/rand"
+	"time"
 )
 
 func GetRandomString(length int) string {

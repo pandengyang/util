@@ -8,8 +8,8 @@ const checkMark = "\u2713"
 const ballotX = "\u2717"
 
 type Task struct {
-	Passwd string
-	Salt string
+	Passwd   string
+	Salt     string
 	Expected string
 }
 
