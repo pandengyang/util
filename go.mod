@@ -1,1 +1,1 @@
-module github.com/pandengyang/util
+module github.com/pandengyang/utils

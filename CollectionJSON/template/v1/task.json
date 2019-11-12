@@ -1,0 +1,111 @@
+{{ define "items" }}
+{
+  "collection": {
+    "href": "http://api.maizimart.com/v1/tasks",
+    "version": "1.0",
+    "links": [
+      {"rel": "author", "href": "mailto:dengyang.pan@aliyun.com", "prompt": "Author"}
+    ],
+    "queries": [
+      {"rel": "all", "href": "http://api.maizimart.com/v1/tasks/all", "prompt": "All tasks"},
+      {"rel": "open", "href": "http://api.maizimart.com/v1/tasks/open", "prompt": "Open tasks"},
+      {"rel": "closed", "href": "http://api.maizimart.com/v1/tasks/closed", "prompt": "Closed tasks"},
+      {"rel": "date-range", "href": "http://api.maizimart.com/v1/tasks/date-range", "prompt": "Date Range",
+        "data": [
+          {"name": "date-start", "value": "", "prompt": "Start Date"},
+          {"name": "date-stop", "value": "", "prompt": "Stop Date"}
+	]
+      }
+    ],
+    "template": {
+      "data": [
+        {"name": "description", "value": "", "prompt": "Description"},
+        {"name": "dateDue", "value": "", "prompt": "Date Due (yyyy-mm-dd)"},
+        {"name": "completed", "value": "", "prompt": "Completed (true/false)"}
+      ]
+    },
+    "items": [
+      {{ range . }}
+      {
+        "href": "http://api.maizimart.com/v1/tasks/{{ .Id }}",
+        "data": [
+          {"name": "description", "value": "{{ .Description }}", "prompt": "Description"},
+          {"name": "dateDue", "value": "{{ .DateDue }}", "prompt": "Date Due (yyyy-mm-dd)"},
+          {"name": "completed", "value": "{{ .Completed }}", "prompt": "Completed (true/false)"}
+        ]
+      },
+      {{ end }}
+    ]
+  }
+}
+{{ end }}
+
+{{ define "item" }}
+{
+  "collection": {
+    "href": "http://api.maizimart.com/v1/tasks",
+    "version": "1.0",
+    "links": [
+      {"rel": "author", "href": "mailto:dengyang.pan@aliyun.com", "prompt": "Author"},
+      {"rel": "queries", "href": "http://api.maizimart.com/v1/tasks/queries", "prompt": "Queries"},
+      {"rel": "template", "href": "http://api.maizimart.com/v1/tasks/template", "prompt": "Template"}
+    ],
+    "items": [
+      {
+        "href": "http://api.maizimart.com/v1/tasks/{{ .Id }}",
+        "data": [
+          {"name": "description", "value": "{{ .Description }}", "prompt": "Description"},
+          {"name": "dateDue", "value": "{{ .DateDue }}", "prompt": "Date Due (yyyy-mm-dd)"},
+          {"name": "completed", "value": "{{ .Completed }}", "prompt": "Completed (true/false)"}
+        ]
+      }
+    ]
+  }
+}
+{{ end }}
+
+{{ define "queries" }}
+{
+  "collection": {
+    "href": "http://api.maizimart.com/v1/tasks",
+    "version": "1.0",
+    "links": [
+      {"rel": "author", "href": "mailto:dengyang.pan@aliyun.com", "prompt": "Author"},
+      {"rel": "queries", "href": "http://api.maizimart.com/v1/tasks/queries", "prompt": "Queries"},
+      {"rel": "template", "href": "http://api.maizimart.com/v1/tasks/template", "prompt": "Template"}
+    ],
+    "queries": [
+      {"rel": "all", "href": "http://api.maizimart.com/v1/tasks/all", "prompt": "All tasks"},
+      {"rel": "open", "href": "http://api.maizimart.com/v1/tasks/open", "prompt": "Open tasks"},
+      {"rel": "closed", "href": "http://api.maizimart.com/v1/tasks/closed", "prompt": "Closed tasks"},
+      {"rel": "date-range", "href": "http://api.maizimart.com/v1/tasks/date-range", "prompt": "Date Range",
+        "data": [
+          {"name": "date-start", "value": "", "prompt": "Start Date"},
+          {"name": "date-stop", "value": "", "prompt": "Stop Date"}
+	]
+      }
+    ]
+  }
+}
+{{ end }}
+
+{{ define "template" }}
+{
+  "collection": {
+    "href": "http://api.maizimart.com/v1/tasks",
+    "version": "1.0",
+    "links": [
+      {"rel": "author", "href": "mailto:dengyang.pan@aliyun.com", "prompt": "Author"},
+      {"rel": "queries", "href": "http://api.maizimart.com/v1/tasks/queries", "prompt": "Queries"},
+      {"rel": "template", "href": "http://api.maizimart.com/v1/tasks/template", "prompt": "Template"}
+    ],
+    "template": {
+      "data": [
+        {"name": "description", "value": "", "prompt": "Description"},
+        {"name": "dateDue", "value": "", "prompt": "Date Due (yyyy-mm-dd)"},
+        {"name": "completed", "value": "", "prompt": "Completed (true/false)"}
+      ]
+    },
+  }
+}
+{{ end }}
