@@ -40,11 +40,14 @@ func Item(item interface{}, pTemplateStr *string) (jsonStr string, err error) {
 
 	t := template.New("")
 	t, err = t.Parse(*pTemplateStr)
-	t.ExecuteTemplate(buf, "item", item)
+	if err != nil {
+		return jsonStr, err
+	}
 
+	t.ExecuteTemplate(buf, "item", item)
 	jsonStr = buf.String()
 
-	return
+	return jsonStr, err
 }
 
 /* Queries template document */
