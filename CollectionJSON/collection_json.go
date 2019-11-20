@@ -2,7 +2,7 @@ package CollectionJSON
 
 import (
 	"bytes"
-	"html/template"
+	"text/template"
 )
 
 type Data struct {

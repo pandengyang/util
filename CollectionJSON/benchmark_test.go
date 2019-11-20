@@ -7,7 +7,7 @@ import (
 func BenchmarkCollection(b *testing.B) {
 	task1 := Task{1, "买书", "2018-09-23", false}
 	task2 := Task{2, "吃月饼", "2018-10-23", false}
-	tasks := [] interface{} {
+	tasks := []interface{}{
 		task1, task2,
 	}
 

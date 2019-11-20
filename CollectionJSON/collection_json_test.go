@@ -1,8 +1,8 @@
 package CollectionJSON
 
 import (
-	"testing"
 	"io/ioutil"
+	"testing"
 )
 
 const checkMark = "\u2713"
@@ -11,10 +11,10 @@ const ballotX = "\u2717"
 var pTaskTemplateStr *string
 
 type Task struct {
-	Id int
+	Id          int
 	Description string
-	DateDue string
-	Completed bool
+	DateDue     string
+	Completed   bool
 }
 
 func init() {
@@ -30,7 +30,7 @@ func init() {
 func TestItems(t *testing.T) {
 	task1 := Task{1, "买书", "2018-09-23", false}
 	task2 := Task{2, "吃月饼", "2018-10-23", false}
-	tasks := [] interface{} {
+	tasks := []interface{}{
 		task1, task2,
 	}
 
