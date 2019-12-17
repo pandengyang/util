@@ -2,6 +2,7 @@ package CollectionJSON
 
 import (
 	"bytes"
+	"github.com/pandengyang/utils/StringUtils"
 	"text/template"
 )
 
@@ -18,7 +19,7 @@ type Datas struct {
 func Items(items []interface{}, pTemplateStr *string) (jsonStr string, err error) {
 	buf := bytes.NewBufferString("")
 
-	t := template.New("")
+	t := template.New("").Funcs(template.FuncMap{"embedded_json": StringUtils.EmbeddedJson})
 	t, err = t.Parse(*pTemplateStr)
 	if err != nil {
 		return
