@@ -12,6 +12,11 @@ type Task struct {
 	Expected bool
 }
 
+type Task2 struct {
+	Pidfile  string
+	Expected bool
+}
+
 func TestProcessExists(t *testing.T) {
 	task1 := Task{49850, false}
 
@@ -20,6 +25,25 @@ func TestProcessExists(t *testing.T) {
 		t.Logf("\tWhen checking whether process exists")
 		{
 			exist := ProcessExists(task1.Pid)
+			if exist == task1.Expected {
+				t.Logf("\t\tShould be able to produce %v.%s", task1.Expected, checkMark)
+				t.Logf("\t\t\t%v", exist)
+			} else {
+				t.Errorf("\t\tShould be able to produce %v.%s", task1.Expected, ballotX)
+				t.Logf("\t\t\t%v", exist)
+			}
+		}
+	}
+}
+
+func TestProcessExistsByPidfile(t *testing.T) {
+	task1 := Task2{"a", true}
+
+	t.Log("Given the need to test whether process exists.")
+	{
+		t.Logf("\tWhen checking whether process exists")
+		{
+			exist := ProcessExistsByPidfile(task1.Pidfile)
 			if exist == task1.Expected {
 				t.Logf("\t\tShould be able to produce %v.%s", task1.Expected, checkMark)
 				t.Logf("\t\t\t%v", exist)

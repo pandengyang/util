@@ -15,5 +15,5 @@ func FileExists(path string) (exist bool, err error) {
 		return false, nil
 	}
 
-	return exist, err
+	return false, err
 }
