@@ -1,4 +1,4 @@
-package FileUtils
+package ProcessUtils
 
 import (
 	"testing"
@@ -8,18 +8,18 @@ const checkMark = "\u2713"
 const ballotX = "\u2717"
 
 type Task struct {
-	Path     string
+	Pid      int
 	Expected bool
 }
 
-func TestFileExists(t *testing.T) {
-	task1 := Task{"a", true}
+func TestProcessExists(t *testing.T) {
+	task1 := Task{49850, false}
 
-	t.Log("Given the need to test whether file exists.")
+	t.Log("Given the need to test whether process exists.")
 	{
-		t.Logf("\tWhen checking whether file exists")
+		t.Logf("\tWhen checking whether process exists")
 		{
-			exist, _ := FileExist(task1.Path)
+			exist := ProcessExists(task1.Pid)
 			if exist == task1.Expected {
 				t.Logf("\t\tShould be able to produce %v.%s", task1.Expected, checkMark)
 				t.Logf("\t\t\t%v", exist)

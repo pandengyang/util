@@ -1,19 +1,19 @@
 package FileUtils
 
 import (
-  "os"
+	"os"
 )
 
-func FileExist(path string) (exist bool, err error) {
-  _, err = os.Lstat(path)
+func FileExists(path string) (exist bool, err error) {
+	_, err = os.Lstat(path)
 
-  if err == nil {
-    return true, nil
-  }
+	if err == nil {
+		return true, nil
+	}
 
-  if os.IsNotExist(err) {
-    return false, nil
-  }
+	if os.IsNotExist(err) {
+		return false, nil
+	}
 
-  return exist, err
+	return exist, err
 }
