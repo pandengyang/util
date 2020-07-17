@@ -38,7 +38,7 @@ func TestItems(t *testing.T) {
 	{
 		t.Logf("\tWhen checking producing items response")
 		{
-			jsonStr, err := Items(tasks, pTaskTemplateStr)
+			jsonStr, err := Items(tasks, 100, pTaskTemplateStr)
 
 			if err == nil {
 				t.Log("\t\tShould be able to produce items response.", checkMark)

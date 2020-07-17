@@ -16,7 +16,12 @@ type Datas struct {
 	Data []Data `json:"data"`
 }
 
-func Items(items []interface{}, pTemplateStr *string) (jsonStr string, err error) {
+type ItemsInfo struct {
+	Items []interface{}
+	Total int64
+}
+
+func Items(items []interface{}, total int64, pTemplateStr *string) (jsonStr string, err error) {
 	buf := bytes.NewBufferString("")
 
 	t := template.New("").Funcs(template.FuncMap{"embedded_json": StringUtils.EmbeddedJson})
@@ -25,7 +30,7 @@ func Items(items []interface{}, pTemplateStr *string) (jsonStr string, err error
 		return
 	}
 
-	err = t.ExecuteTemplate(buf, "items", items)
+	err = t.ExecuteTemplate(buf, "items", ItemsInfo{items, total})
 	if err != nil {
 		return
 	}
