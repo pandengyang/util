@@ -4,16 +4,13 @@ import (
 	"testing"
 )
 
-const checkMark = "\u2713"
-const ballotX = "\u2717"
-
-type Task struct {
+type TaskFile struct {
 	Path     string
 	Expected bool
 }
 
 func TestFileExists(t *testing.T) {
-	task1 := Task{"", true}
+	task1 := TaskFile{"file.go", true}
 
 	t.Log("Given the need to test whether file exists.")
 	{
