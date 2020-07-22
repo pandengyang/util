@@ -44,7 +44,7 @@ func Items(items []interface{}, total int64, pTemplateStr *string) (jsonStr stri
 func Item(item interface{}, pTemplateStr *string) (jsonStr string, err error) {
 	buf := bytes.NewBufferString("")
 
-	t := template.New("")
+	t := template.New("").Funcs(template.FuncMap{"embedded_json": StringUtils.EmbeddedJson})
 	t, err = t.Parse(*pTemplateStr)
 	if err != nil {
 		return jsonStr, err
@@ -60,7 +60,7 @@ func Item(item interface{}, pTemplateStr *string) (jsonStr string, err error) {
 func Queries(pTemplateStr *string) (jsonStr string, err error) {
 	buf := bytes.NewBufferString("")
 
-	t := template.New("")
+	t := template.New("").Funcs(template.FuncMap{"embedded_json": StringUtils.EmbeddedJson})
 	t, err = t.Parse(*pTemplateStr)
 	t.ExecuteTemplate(buf, "queries", nil)
 
@@ -73,7 +73,7 @@ func Queries(pTemplateStr *string) (jsonStr string, err error) {
 func Template(pTemplateStr *string) (jsonStr string, err error) {
 	buf := bytes.NewBufferString("")
 
-	t := template.New("")
+	t := template.New("").Funcs(template.FuncMap{"embedded_json": StringUtils.EmbeddedJson})
 	t, err = t.Parse(*pTemplateStr)
 	t.ExecuteTemplate(buf, "template", nil)
 
