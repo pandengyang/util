@@ -9,7 +9,7 @@ import (
 type Data struct {
 	Name   string `json:"name"`
 	Value  string `json:"value"`
-	Prompt string `json:"prompt"`
+	Prompt string `json:"prompt,omitemtpy"`
 }
 
 type Datas struct {
