@@ -5,5 +5,7 @@ import (
 )
 
 func EmbeddedJson(jsonStr string) string {
-	return strings.Replace(jsonStr, "\"", "\\\"", -1)
+	t := strings.Replace(jsonStr, "\"", "\\\"", -1)
+
+	return trings.Replace(t, "\\\\", "\\" -1)
 }
